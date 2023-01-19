@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="https://me2.do/5BvBFJ57">
+<style>
+
+</style>
+</head>
+<body>
+
+   <!-- m6.html -->
+   <h1>Thymeleaf</h1>
+   
+   <!-- 
+   
+   			Thymeleaf Text
+   			
+   			- HTML 시작 태그 ~ 끝 태그 > PCDATA조작
+   				1. th:text
+   					- escaped text
+   					- 태그가 안먹음
+   					- '<' -> &lt;
+   					- '>' -> &gt;
+   					- textContent(innerText)
+   				
+   				2. th:utext
+   					- unescaped text
+   					- innerHTML
+   					
+   			- 인라인 출력
+   				- th:inline="text"
+   				- th:inline="javascript"
+   				- th:inline + [  []  ]	//escaped text
+   				- th:inline + [  ()  ]	//unescaped text
+   
+    -->
+    
+    <!-- Thymleaf주석은 /**/을 추가로 넣어주어야한다. -->
+    <!-- <div th:text="${txt1}"></div> -->
+    <!-- /* <div th:utext="${txt1}"></div> */-->
+   
+   <hr>
+    
+    <div th:text="${txt2}"></div>
+    <div th:utext="${txt2}"></div>
+   
+   <hr>
+   
+   <!-- 3개가 모두 동일한 것임, th:inline="text"가 기본값이라 안적어주어도 된다. -->
+    <div th:text="${txt1}"></div>
+   <div th:inline="text">[[${txt1}]]</div>
+   <div>[[${txt1}]]</div>
+   
+   <div th:utext="${txt2}"></div>
+   <div th:inline="text">[(${txt2})]</div>
+   <div>[(${txt2})]</div>
+   
+   <hr>
+   
+   <!-- PCDATA를 조작하는 모든 방법 -->
+   <div>이름: 홍길동</div>
+   <div>이름: <span th:text="${dto.name}"></span><div>
+   <div th:text="'이름: ' + ${dto.name}"></div>
+   <div th:text="|이름: ${dto.name}|"></div>
+   <div th:inline="text">이름: [[${dto.name}]]</div>
+   <div>이름: [[${dto.name}]]</div>
+   
+   <hr>
+   
+   <div id="label1"></div>
+   <div id="label2"></div>
+   
+
+   
+   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+   <script>
+   
+   		//let name1 = ${dto.name};
+   		//dto에서 가져온 데이터를 사용하기 위해서는 아래의 방법을 써야한다.
+   		let name1 = '[[${dto.name}]]';
+   		let age1 = '[[${dto.age}]]';
+		let dto1 = '[[${dto}]]';
+		let map1 = '[[${map}]]';
+		let names1 = '[[${names}]]';		//얼핏보면 잘 나온것 같지만, 문자열인데 쌍따옴표로 묶여있지 않기 때문에 사용하기 힘들다.
+   		let list1 = '[[${list}]]';
+		
+   		$('#label1').text(name1);
+   
+   
+   </script>
+   
+   		<!-- inline javascript를 적어주면 모든 표현식을 자바스크립트 형식으로 출력한다. > 마치 오라클 ? 와 같은 형태(따옴표를 붙히지 않아도, 타임리프가 인식하여 자료형을 판단해서 알아서 넣어줌) -->
+   		
+   <script th:inline="javascript">
+   
+   	
+   		let name2 =  [[${dto.name}]];
+   		let age2 = [[${dto.age}]];
+   		let dto2 = [[${dto}]];
+   		// AddressDTO > JavaScript Object로 제공해줌! 완전 좋음!
+   		let map2 = [[${map}]];
+   		let names2 = [[${names}]];
+   		let list2 = [[${list}]];
+   		//애초부터 javascript object로 나오니까 바로 each로 값을 받아낼 수 있음. > EL이나 JSTL보다 편함
+   		
+   		
+   		//$('#label2').text(name2);
+   		$('#label2').text(dto2.age + ',' +dto2.address);
+   		
+   		$(list2).each(function(index, item) {
+   			$('#name').val(item,name);
+   		});
+   		
+   </script>
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

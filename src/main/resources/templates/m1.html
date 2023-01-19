@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="https://me2.do/5BvBFJ57">
+<style>
+
+</style>
+</head>
+<body>
+   <!-- m1 -->
+   <h1>Thymeleaf</h1>
+
+	
+	<h2>변수 표현식</h2>
+   
+   <div>${num}</div> <!-- 이렇게만 적으면 그냥 문자열로 인식 -->
+   <div th:text="${num}">100</div>	<!-- 해당 값이 pcdata로 들어가며, 직접 적어준 pcdata 값은 적용되지 않는다 -->
+   <div th:text="100">값</div>
+   
+	<h2>자료형별 출력</h2>
+   <div th:text="${num}">숫자: </div>
+   <div th:text="'숫자:' + ${num}"></div>
+   <div>숫자: <span th:text="${num}"></span></div>
+   
+   <div>문자열: <span th:text="${txt}"></span></div>
+
+   <div>날짜: <span th:text="${now}"></span></div>
+   
+   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+   <script>
+   
+   </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

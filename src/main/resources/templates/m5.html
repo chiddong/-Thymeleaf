@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<!-- <link rel="stylesheet" href="https://me2.do/5BvBFJ57"> -->
+<style>
+
+	.one { color: blue; }
+	.two { text-decoration: underline; }
+	.three { font-size: 3rem; }
+
+</style>
+</head>
+<body>
+   <!-- m5.html -->
+   <h1>Thyemleaf + HTML Attribute</h1>
+   
+   <!-- 
+   			
+   			타임리프의 표현식들은 th:속성과 같이 사용해야 한다.(***)
+   			
+   			HTML 속성 조작
+   			- th:HTML속성명 = 값
+   
+    -->
+    
+    <input type="text" name="age" size="${size}">
+   	<br>
+    <input th:type="text" th:name="age" th:size="${size}">
+   	<br>
+	<input type="text" th:value="${name}" value="아무개">
+	
+	<hr>
+   
+   <div class="one">Box</div>
+   <div th:class="one">Box</div>
+   
+   <div class="one" th:class="two">Box</div>
+   
+   <!-- 클래스 앞뒤에 추가하기 공백있어야함! -->
+   <div class="one" th:attrappend="class=' two'">Box</div>
+   <div class="one" th:attrprepend="class='three '">Box</div>
+   
+   <!-- 위의 두개를 합친 느낌 -->
+   <div class="one" th:classappend="two">Box</div>
+   
+   <input type="checkbox" name="cb" checked>
+   <input type="checkbox" name="cb" th:checked="true">
+   <input type="checkbox" name="cb" th:checked="${size > 0}">
+   <input type="checkbox" name="cb" th:checked="${size < 0}">
+   
+   <div th:style="'background-color:' + ${color}">Box</div>
+   <div th:style="|background-color:${color}|">Box</div>
+   
+   
+   
+   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+   <script>
+   
+   </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

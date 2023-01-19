@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="https://me2.do/5BvBFJ57">
+<style>
+
+</style>
+</head>
+<body>
+   
+   <!-- m2.html -->
+   <h1>Thymeleaf + 객체 출력</h1>
+   
+   <h2>DTO</h2>
+   
+   <ul>
+   		<li th:text="${dto}"></li>
+   		<li th:text="${dto.getName()}"></li>
+   		<li th:text="${dto.name}"></li>
+   		<li th:text="${dto.seq}"></li>
+   		<li th:text="${dto.age}"></li>
+   		<li th:text="${dto.gender}"></li>
+   		<li th:text="${dto.address}"></li>
+   		
+   		<li>이름: <span th:text="${dto.name}"></span></li>
+   		
+   </ul>
+   
+   <!-- 선택 변수 표현식 > 태그의 구조가 반드시 부모-자식 으로 되어 있어야 한다. 부모에 object로 dto를 주면 자식에서는 반복되는 dto.을 생략하고 적을 수 있음 -->
+   <ul th:object="${dto}">
+   		<li>이름: <span th:text="*{name}"></span></li>
+   		<li>나이: <span th:text="*{age}"></span></li>
+   		<li>성별: <span th:text="*{gender}"></span></li>
+   		<li>주소: <span th:text="*{address}"></span></li>
+   		<li>번호: <span th:text="*{seq}"></span></li>
+   </ul>
+   
+   <h2>Map</h2>
+   
+   <div>국어: <span th:text="${map.get('kor')}"></span></div>
+   <div>영어: <span th:text="${map.eng}"></span></div>
+   <div>수학: <span th:text="${map.math}"></span></div>
+   
+   <div th:object="${map}">
+   		<div th:text="*{kor}"></div>
+   		<div th:text="*{eng}"></div>
+   		<div th:text="*{math}"></div>
+   </div>
+   
+   
+   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+   <script>
+   
+   </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
